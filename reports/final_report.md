@@ -51,7 +51,7 @@ Latency is measured end-to-end around `gateway.complete()`, so P50/P95/P99 inclu
 
 ## Metrics Summary
 
-These metrics are from the with-cache run stored in `reports/metrics.json`. Percentiles are end-to-end request latency, not provider-only latency.
+These metrics are from the with-cache run stored in `reports/metrics.json`. Percentiles are end-to-end request latency, not provider-only latency. Cache entries use `ttl_seconds = 300`, so cache lifetime is not zero. A cache-hit `GatewayResponse` now carries its real measured cache-lookup latency (measured inside `gateway.complete()`), so cache-hit requests contribute their actual latency to P50/P95/P99.
 
 | Metric | Value |
 |---|---:|
@@ -155,5 +155,6 @@ One remaining weakness is that recovery time depends on enough post-timeout prob
 1. Store circuit-breaker state in Redis so multiple gateway instances share failure counters.
 2. Add background health probes to reduce recovery delay in low-traffic periods.
 3. Add cost-aware routing that prefers cheaper providers or cache-only mode when budget is nearly exhausted.
+
 
 
