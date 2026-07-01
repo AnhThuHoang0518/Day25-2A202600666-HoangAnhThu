@@ -2,6 +2,7 @@ from __future__ import annotations
 
 import json
 import random
+import time
 from pathlib import Path
 
 from reliability_lab.cache import ResponseCache, SharedRedisCache
@@ -65,13 +66,15 @@ def calculate_recovery_time_ms(gateway: ReliabilityGateway) -> float | None:
 
 
 def run_scenario(config: LabConfig, queries: list[str], scenario: ScenarioConfig) -> RunMetrics:
-    """Run a single named chaos scenario."""
+    """Run a single named chaos scenario and measure end-to-end request latency."""
     gateway = build_gateway(config, scenario.provider_overrides or None)
     metrics = RunMetrics()
 
     for _ in range(config.load_test.requests):
         prompt = random.choice(queries)
+        start = time.perf_counter()
         result = gateway.complete(prompt)
+        elapsed_ms = (time.perf_counter() - start) * 1000
         metrics.total_requests += 1
         metrics.estimated_cost += result.estimated_cost
 
@@ -88,8 +91,7 @@ def run_scenario(config: LabConfig, queries: list[str], scenario: ScenarioConfig
         else:
             metrics.successful_requests += 1
 
-        if result.latency_ms > 0:
-            metrics.latencies_ms.append(result.latency_ms)
+        metrics.latencies_ms.append(elapsed_ms)
 
     metrics.circuit_open_count = sum(
         1
