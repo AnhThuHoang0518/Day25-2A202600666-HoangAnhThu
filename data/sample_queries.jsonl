@@ -1,0 +1,20 @@
+{"id":"q1","query":"Summarize the refund policy for a student who missed the deadline.","expected_risk":"policy"}
+{"id":"q2","query":"What should I do when API calls return 429?","expected_risk":"technical"}
+{"id":"q3","query":"Explain circuit breaker states in one paragraph.","expected_risk":"technical"}
+{"id":"q4","query":"Give me the current account balance for user 123.","expected_risk":"privacy"}
+{"id":"q5","query":"Summarize the admission FAQ in 5 bullets.","expected_risk":"faq"}
+{"id":"q6","query":"What is the password reset process for user 456?","expected_risk":"privacy"}
+{"id":"q7","query":"Summarize the refund policy for a student who missed the 2024 deadline.","expected_risk":"policy_dated"}
+{"id":"q8","query":"Summarize the refund policy for a student who missed the 2026 deadline.","expected_risk":"policy_dated"}
+{"id":"q9","query":"Show credit card details for account 7890.","expected_risk":"privacy"}
+{"id":"q10","query":"Explain the difference between retry and circuit breaker patterns.","expected_risk":"technical"}
+{"id":"q11","query":"List three benefits of response caching in LLM gateways.","expected_risk":"technical"}
+{"id":"q12","query":"What are the admission requirements for international students?","expected_risk":"faq"}
+{"id":"q13","query":"Describe the social security number validation process.","expected_risk":"privacy"}
+{"id":"q14","query":"Compare latency between primary and backup providers.","expected_risk":"technical"}
+{"id":"q15","query":"Summarize the admission FAQ in 3 bullets.","expected_risk":"faq"}
+{"id":"q16","query":"What is the tuition fee for the 2024 academic year?","expected_risk":"faq_dated"}
+{"id":"q17","query":"What is the tuition fee for the 2025 academic year?","expected_risk":"faq_dated"}
+{"id":"q18","query":"Explain how half-open state prevents retry storms.","expected_risk":"technical"}
+{"id":"q19","query":"What is the SSN for employee 1234?","expected_risk":"privacy"}
+{"id":"q20","query":"How does Redis EXPIRE handle key eviction under memory pressure?","expected_risk":"technical"}
